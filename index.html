@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex,nofollow"><title>2026-10-19 标讯筛选页</title><style>
+:root{color-scheme:light;--ink:#243343;--muted:#687889;--line:#e3e9ef;--blue:#225bc7;--pale:#edf3ff}
+*{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:var(--ink);font:14px/1.6 "Microsoft YaHei","PingFang SC",Arial,sans-serif}main{max-width:1120px;margin:auto;padding:32px 28px 48px}button,input,select{font:inherit}button,a,input,select{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #80adff;outline-offset:3px}[hidden]{display:none!important}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}.brand-mark{display:grid;place-items:center;background:var(--blue);color:white;border-radius:9px;width:32px;height:32px}.brand-en{font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:500}.hero{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:26px 0 24px}.eyebrow{margin:0 0 5px;color:var(--muted)}h1{font-size:28px;letter-spacing:.3px;margin:0;line-height:1.5}.total{display:flex;align-items:baseline;gap:8px;white-space:nowrap}.total strong{font-size:32px;font-weight:600}.total span{color:var(--muted)}
+.filters{padding:24px;background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 20px #26385305}fieldset{border:0;padding:0;margin:0 0 20px;min-width:0}legend{font-size:13px;font-weight:600;margin:0 0 10px;padding:0}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid var(--line);background:white;border-radius:8px;padding:7px 12px;color:#516172;max-width:100%;white-space:normal;text-align:left}.chip:hover{border-color:#a6bce3}.chip[aria-pressed="true"]{background:var(--pale);border-color:#a4bfee;color:var(--blue);font-weight:600}.chip .count{margin-left:6px;font-size:12px;opacity:.8}
+.search-row{display:flex;align-items:end;gap:14px;border-top:1px solid var(--line);padding-top:20px}.search-row label{display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted);min-width:0}.search-label{flex:1}.search-row input,.search-row select{height:42px;border:1px solid #d4dee8;border-radius:8px;background:#fff;color:var(--ink);padding:8px 12px;min-width:0;width:100%}.search-row select{min-width:160px}.reset{height:42px;background:white;color:var(--blue);border:0;padding:8px 4px;white-space:nowrap}.results-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:24px 0 12px;color:var(--muted);font-size:13px}.results-bar p{margin:0}.results-bar label{display:flex;align-items:center;gap:8px;white-space:nowrap}.results-bar select{border:1px solid var(--line);background:white;border-radius:6px;padding:5px;color:var(--ink)}
+.notices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.notice{min-width:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;overflow-wrap:anywhere}.notice-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.badge{padding:3px 8px;background:#f0f3f7;color:#516172;border-radius:5px;font-size:11px}.badge.tender,.badge.purchase{background:#edf3ff;color:#225bc7}.badge.results,.badge.candidates{background:#ebf6f0;color:#28704d}.badge.updates{background:#fff2e9;color:#9d5626}.notice time{font-size:12px;color:var(--muted);white-space:nowrap}.notice h2{font-size:16px;line-height:1.7;margin:0 0 9px;font-weight:600}.notice a{color:var(--ink);text-decoration:none}.notice a:hover{color:var(--blue);text-decoration:underline}.source,.metadata,.project-number{font-size:12px;color:var(--muted);margin:4px 0}.source{color:#48617b}.notice dl{border-top:1px solid #edf0f4;margin:16px 0 0;padding-top:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.notice dt{font-size:11px;color:var(--muted)}.notice dd{font-size:13px;margin:2px 0 0;color:var(--ink)}.pagination{display:flex;align-items:center;justify-content:center;gap:20px;margin:28px 0 0;font-size:13px}.pagination button{padding:8px 14px;border:1px solid #d4dee8;border-radius:7px;background:white;color:var(--ink)}.pagination button:disabled{opacity:.4;cursor:default}.empty{text-align:center;padding:60px 16px;background:white;border:1px solid var(--line);border-radius:12px}.empty h2{font-size:18px;margin:0 0 8px}.empty p{color:var(--muted);margin:0}.warning{background:#fff7e7;border-radius:8px;padding:12px 16px;margin-top:20px;color:#80511c;overflow-wrap:anywhere}
+@media(max-width:680px){main{padding:20px 16px 32px}.hero{gap:12px;margin:22px 0}h1{font-size:22px}.total strong{font-size:25px}.total{flex-direction:column;gap:0;align-items:center}.filters{padding:18px 14px}.chips{gap:7px}.chip{font-size:12px;padding:7px 9px}.search-row{flex-wrap:wrap;gap:12px}.search-label{flex-basis:100%}.search-row label:not(.search-label){flex:1}.search-row select{min-width:0}.search-row .reset{padding:8px 10px}.notices{grid-template-columns:minmax(0,1fr)}.notice{padding:18px}.notice h2{font-size:15px}.results-bar{font-size:12px;align-items:start}.results-bar label{gap:4px}.pagination{gap:14px}}
+@media print{body{background:white}main{padding:0;max-width:none}.filters,.pagination,.results-bar label{display:none}.notice{break-inside:avoid;box-shadow:none}.notices{display:block}.notice{margin-bottom:12px}}
+</style></head>
+<body><main><header><div class="brand"><span class="brand-mark">标</span>标讯邮差 <span class="brand-en">BIDFLOW</span></div>
+<div class="hero"><div><p class="eyebrow">2026-10-19</p><h1>标讯筛选演示</h1></div><div class="total"><strong>9</strong><span>条公告</span></div></div></header>
+<section class="filters" aria-label="公告筛选">
+<fieldset><legend>平台来源</legend><div class="chips"><button type="button" class="chip" data-group="source" data-value="" aria-pressed="true">全部 <span class="count">9</span></button><button type="button" class="chip" data-group="source" data-value="浙江省统一招采" aria-pressed="false">浙江省统一招采 <span class="count">1</span></button><button type="button" class="chip" data-group="source" data-value="嘉兴公共资源交易平台" aria-pressed="false">嘉兴公共资源交易平台 <span class="count">2</span></button><button type="button" class="chip" data-group="source" data-value="禾采联 HCL" aria-pressed="false">禾采联 HCL <span class="count">5</span></button><button type="button" class="chip" data-group="source" data-value="浙江省地市平台" aria-pressed="false">浙江省地市平台 <span class="count">1</span></button></div></fieldset>
+<fieldset><legend>公告类型</legend><div class="chips"><button type="button" class="chip" data-group="category" data-value="" aria-pressed="true">全部 <span class="count">9</span></button><button type="button" class="chip" data-group="category" data-value="tender" aria-pressed="false">招标公告 <span class="count">1</span></button><button type="button" class="chip" data-group="category" data-value="purchase" aria-pressed="false">采购公告 <span class="count">4</span></button><button type="button" class="chip" data-group="category" data-value="candidates" aria-pressed="false">候选人公示 <span class="count">1</span></button><button type="button" class="chip" data-group="category" data-value="results" aria-pressed="false">中标 / 成交结果 <span class="count">1</span></button><button type="button" class="chip" data-group="category" data-value="updates" aria-pressed="false">变更 / 终止 <span class="count">1</span></button><button type="button" class="chip" data-group="category" data-value="consultation" aria-pressed="false">采购预告 / 意见征集 <span class="count">1</span></button></div></fieldset>
+<div class="search-row"><label class="search-label" for="keyword">关键词<input type="search" id="keyword" placeholder="搜索标题、项目编号或单位" autocomplete="off"></label>
+<label for="region">地区<select id="region"><option value="">全部地区</option><option value="南湖区">南湖区</option><option value="嘉兴市">嘉兴市</option><option value="嘉善县">嘉善县</option><option value="平湖市">平湖市</option><option value="桐乡市">桐乡市</option><option value="海宁市">海宁市</option><option value="__unknown__">地区未列明</option></select></label>
+<button type="button" id="reset" class="reset">清空筛选</button></div></section>
+<div class="results-bar"><p id="result-count" role="status" aria-live="polite">共 9 条公告</p><label for="page-size">每页<select id="page-size"><option value="20">20 条</option><option value="50">50 条</option><option value="100">100 条</option></select></label></div>
+<noscript><p class="warning">请用浏览器打开此文件以使用筛选。以下为完整清单。</p></noscript>
+<section id="notices" class="notices" aria-label="公告列表"><article class="notice" data-source="浙江省统一招采" data-category="tender" data-region="嘉兴市" data-search="【演示】嘉兴市市政道路改造工程招标公告 jx-demo-2026 浙江省统一招采 嘉兴市 招标公告  " data-index="0">
+<div class="notice-heading"><span class="badge tender">招标公告</span><time>2026-10-19</time></div>
+<h2><a href="https://ggzy.zj.gov.cn/" target="_blank" rel="noopener noreferrer">【演示】嘉兴市市政道路改造工程招标公告</a></h2><p class="source">浙江省统一招采</p>
+<p class="metadata">嘉兴市</p>
+<p class="project-number">项目编号 JX-DEMO-2026</p>
+<dl><div><dt>投标截止</dt><dd>2026-11-10 09:30</dd></div><div><dt>预算金额</dt><dd>1200 万元</dd></div></dl></article><article class="notice" data-source="嘉兴公共资源交易平台" data-category="updates" data-region="嘉善县" data-search="【演示】嘉善县公共设施改造工程延期公告  嘉兴公共资源交易平台 嘉善县 变更公告  " data-index="1">
+<div class="notice-heading"><span class="badge updates">变更 / 终止</span><time>2026-10-19</time></div>
+<h2><a href="https://jxszwsjb.jiaxing.gov.cn/" target="_blank" rel="noopener noreferrer">【演示】嘉善县公共设施改造工程延期公告</a></h2><p class="source">嘉兴公共资源交易平台</p>
+<p class="metadata">嘉善县</p>
+
+<dl><div><dt>变更后截止</dt><dd>2026-11-02 09:00</dd></div></dl></article><article class="notice" data-source="禾采联 HCL" data-category="purchase" data-region="海宁市" data-search="【演示】海宁市园区设备采购项目  禾采联 hcl 海宁市 公开招标  " data-index="2">
+<div class="notice-heading"><span class="badge purchase">采购公告</span><time>2026-10-19</time></div>
+<h2><a href="https://hcl.jxcqgs.cn/" target="_blank" rel="noopener noreferrer">【演示】海宁市园区设备采购项目</a></h2><p class="source">禾采联 HCL</p>
+<p class="metadata">海宁市 · 货物类 · 公开招标</p>
+
+<dl><div><dt>投标截止</dt><dd>2026-10-30 09:00</dd></div></dl></article><article class="notice" data-source="禾采联 HCL" data-category="purchase" data-region="南湖区" data-search="【演示】南湖区办公空间维护服务采购公告  禾采联 hcl 南湖区 采购公告  " data-index="3">
+<div class="notice-heading"><span class="badge purchase">采购公告</span><time>2026-10-19</time></div>
+<h2><a href="https://hcl.jxcqgs.cn/" target="_blank" rel="noopener noreferrer">【演示】南湖区办公空间维护服务采购公告</a></h2><p class="source">禾采联 HCL</p>
+<p class="metadata">南湖区 · 服务类 · 竞争性磋商</p>
+
+<dl><div><dt>响应截止</dt><dd>2026-10-29 14:30</dd></div></dl></article><article class="notice" data-source="嘉兴公共资源交易平台" data-category="consultation" data-region="嘉兴市" data-search="【演示】嘉兴市智慧停车服务招标文件公示  嘉兴公共资源交易平台 嘉兴市 招标文件公示  " data-index="4">
+<div class="notice-heading"><span class="badge consultation">采购预告 / 意见征集</span><time>2026-10-19</time></div>
+<h2><a href="https://jxszwsjb.jiaxing.gov.cn/" target="_blank" rel="noopener noreferrer">【演示】嘉兴市智慧停车服务招标文件公示</a></h2><p class="source">嘉兴公共资源交易平台</p>
+<p class="metadata">嘉兴市</p>
+
+</article><article class="notice" data-source="禾采联 HCL" data-category="candidates" data-region="桐乡市" data-search="【演示】桐乡市配套设施工程中标候选人公示  禾采联 hcl 桐乡市 中标候选人公示  " data-index="5">
+<div class="notice-heading"><span class="badge candidates">候选人公示</span><time>2026-10-19</time></div>
+<h2><a href="https://hcl.jxcqgs.cn/" target="_blank" rel="noopener noreferrer">【演示】桐乡市配套设施工程中标候选人公示</a></h2><p class="source">禾采联 HCL</p>
+<p class="metadata">桐乡市</p>
+
+<dl><div><dt>公示期</dt><dd>2026-10-19 至 2026-10-22</dd></div></dl></article><article class="notice" data-source="禾采联 HCL" data-category="results" data-region="平湖市" data-search="【演示】平湖市园区绿化养护服务成交公告  禾采联 hcl 平湖市 成交公告  " data-index="6">
+<div class="notice-heading"><span class="badge results">中标 / 成交结果</span><time>2026-10-19</time></div>
+<h2><a href="https://hcl.jxcqgs.cn/" target="_blank" rel="noopener noreferrer">【演示】平湖市园区绿化养护服务成交公告</a></h2><p class="source">禾采联 HCL</p>
+<p class="metadata">平湖市</p>
+
+</article><article class="notice" data-source="浙江省地市平台" data-category="purchase" data-region="南湖区" data-search="【演示】南湖区公共服务设施采购公告  浙江省地市平台 南湖区 采购公告  " data-index="7">
+<div class="notice-heading"><span class="badge purchase">采购公告</span><time>2026-10-19</time></div>
+<h2><a href="https://ggzy.zj.gov.cn/" target="_blank" rel="noopener noreferrer">【演示】南湖区公共服务设施采购公告</a></h2><p class="source">浙江省地市平台</p>
+<p class="metadata">南湖区 · 公开招标</p>
+
+<dl><div><dt>投标截止</dt><dd>2026-11-12 09:00</dd></div></dl></article><article class="notice" data-source="禾采联 HCL" data-category="purchase" data-region="" data-search="【演示】采购项目公告（未列明地区）  禾采联 hcl  采购公告  " data-index="8">
+<div class="notice-heading"><span class="badge purchase">采购公告</span><time>2026-10-19</time></div>
+<h2><a href="https://hcl.jxcqgs.cn/" target="_blank" rel="noopener noreferrer">【演示】采购项目公告（未列明地区）</a></h2><p class="source">禾采联 HCL</p>
+
+
+</article></section>
+<section id="empty" class="empty" hidden><h2>没有符合条件的公告</h2><p>换个关键词，或清空筛选再看看。</p></section>
+<nav class="pagination" aria-label="翻页"><button type="button" id="previous">上一页</button><span id="page-status"></span><button type="button" id="next">下一页</button></nav>
+</main><script>
+(() => {
+  'use strict';
+  const cards = [...document.querySelectorAll('.notice')];
+  const chips = [...document.querySelectorAll('.chip')];
+  const selected = { source: new Set(), category: new Set() };
+  const keyword = document.getElementById('keyword');
+  const region = document.getElementById('region');
+  const pageSize = document.getElementById('page-size');
+  const previous = document.getElementById('previous');
+  const next = document.getElementById('next');
+  let page = 1;
+  function matches(card, except) {
+    for (const group of ['source', 'category']) {
+      if (group !== except && selected[group].size && !selected[group].has(card.dataset[group])) return false;
+    }
+    if (region.value === '__unknown__') {
+      if (card.dataset.region) return false;
+    } else if (region.value && card.dataset.region !== region.value) {
+      return false;
+    }
+    return keyword.value.trim().toLowerCase().split(/\s+/).filter(Boolean).every(word => card.dataset.search.includes(word));
+  }
+  function render() {
+    const matching = cards.filter(card => matches(card));
+    const size = Number(pageSize.value);
+    const pages = Math.max(1, Math.ceil(matching.length / size));
+    page = Math.max(1, Math.min(page, pages));
+    const visible = new Set(matching.slice((page - 1) * size, page * size));
+    cards.forEach(card => { card.hidden = !visible.has(card); });
+    const active = selected.source.size || selected.category.size || region.value || keyword.value.trim();
+    const start = matching.length ? (page - 1) * size + 1 : 0;
+    const end = Math.min(page * size, matching.length);
+    document.getElementById('result-count').textContent = (active ? '筛选到 ' : '共 ') + matching.length + ' 条公告' + (matching.length ? ' · 显示 ' + start + '–' + end + ' 条' : '');
+    document.getElementById('page-status').textContent = page + ' / ' + pages;
+    document.getElementById('empty').hidden = matching.length !== 0;
+    document.querySelector('.pagination').hidden = matching.length <= size;
+    previous.disabled = page === 1;
+    next.disabled = page === pages;
+    for (const chip of chips) {
+      const { group, value } = chip.dataset;
+      chip.setAttribute('aria-pressed', String(value ? selected[group].has(value) : !selected[group].size));
+      chip.querySelector('.count').textContent = cards.filter(card => matches(card, group) && (!value || card.dataset[group] === value)).length;
+    }
+  }
+  for (const chip of chips) chip.addEventListener('click', () => {
+    const { group, value } = chip.dataset;
+    if (!value) selected[group].clear();
+    else if (selected[group].has(value)) selected[group].delete(value);
+    else selected[group].add(value);
+    page = 1; render();
+  });
+  keyword.addEventListener('input', () => { page = 1; render(); });
+  region.addEventListener('change', () => { page = 1; render(); });
+  pageSize.addEventListener('change', () => { page = 1; render(); });
+  document.getElementById('reset').addEventListener('click', () => {
+    selected.source.clear(); selected.category.clear(); keyword.value = ''; region.value = ''; page = 1; render();
+  });
+  previous.addEventListener('click', () => { page -= 1; render(); document.getElementById('result-count').scrollIntoView({block:'start'}); });
+  next.addEventListener('click', () => { page += 1; render(); document.getElementById('result-count').scrollIntoView({block:'start'}); });
+  render();
+})();
+</script></body></html>
